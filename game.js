@@ -22,8 +22,6 @@ const maxComputerHP = 5;
 const maxPlayerHP = 5;
 let computerHP = 5;
 let playerHP = 5;
-let lastComputerMove = null;
-let lastPlayerMove = null;
 const pseudoRoot = document.querySelector(":root");
 
 function setComputerHP(hp){
