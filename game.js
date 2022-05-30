@@ -5,24 +5,35 @@
  * 2: Scissors
  */
 
- document.querySelector(".rock").addEventListener('click', (e) => {
-    makeChoice(0);
-    console.log(playerHP + " " + computerHP);
-})
-document.querySelector(".paper").addEventListener('click', (e) => {
-    makeChoice(1);
-    console.log(playerHP + " " + computerHP);
-})
-document.querySelector(".scissor").addEventListener('click', (e) => {
-    makeChoice(2);
-    console.log(playerHP + " " + computerHP);
-})
-
 const maxComputerHP = 5;
 const maxPlayerHP = 5;
 let computerHP = 5;
 let playerHP = 5;
 const pseudoRoot = document.querySelector(":root");
+const panel = document.querySelector('panel');
+
+/**
+ * Remove all children from the panel
+ */
+function clearPanel() {
+    while (panel.firstChild) {
+        panel.removeChild(panel.firstChild);
+    }
+}
+
+document.querySelector(".rock").addEventListener('click', (e) => {
+    const computerChoice = makeChoice(0);
+
+    console.log(playerHP + " " + computerHP);
+})
+document.querySelector(".paper").addEventListener('click', (e) => {
+    const computerChoice = makeChoice(1);
+    console.log(playerHP + " " + computerHP);
+})
+document.querySelector(".scissor").addEventListener('click', (e) => {
+    const computerChoice = makeChoice(2);
+    console.log(playerHP + " " + computerHP);
+})
 
 function setComputerHP(hp){
     computerHP = hp;
