@@ -10,7 +10,7 @@ const maxPlayerHP = 5;
 let computerHP = 5;
 let playerHP = 5;
 const pseudoRoot = document.querySelector(":root");
-const panel = document.querySelector('panel');
+const panel = document.querySelector('.panel');
 
 /**
  * Remove all children from the
@@ -25,23 +25,50 @@ function clearPanel() {
  * Plays the given choice and updates css and hp
  * @param {number} choice 0=rock ,1=paper, 2=scissors
  */
-function play(choice){
+function play(choice) {
     const computerChoice = makeChoice(choice);
+    clearPanel();
+    const playerMoveImg = document.createElement('img');
+    const computerMoveImg = document.createElement('img');
+    switch (choice) {
+        case 0:
+            playerMoveImg.src = 'images/rock.png';
+            break;
+        case 1:
+            playerMoveImg.src = 'images/paper.png';
+            break;
+        case 2:
+            playerMoveImg.src = 'images/scissors.png';
+            break;
+    }
+    switch (computerChoice) {
+        case 0:
+            computerMoveImg.src = 'images/rock.png';
+            break;
+        case 1:
+            computerMoveImg.src = 'images/paper.png';
+            break;
+        case 2:
+            computerMoveImg.src = 'images/scissors.png';
+            break;
+    }
+    panel.appendChild(playerMoveImg);
+    panel.appendChild(computerMoveImg);
     console.log(playerHP + " " + computerHP);
 }
 
-document.querySelector(".rock").addEventListener('click', ()=>{play(0)});
-document.querySelector(".paper").addEventListener('click', ()=>{play(1)});
-document.querySelector(".scissor").addEventListener('click', ()=>{play(2)});
+document.querySelector(".rock").addEventListener('click', () => { play(0) });
+document.querySelector(".paper").addEventListener('click', () => { play(1) });
+document.querySelector(".scissor").addEventListener('click', () => { play(2) });
 
-function setComputerHP(hp){
+function setComputerHP(hp) {
     computerHP = hp;
-    pseudoRoot.style.setProperty('--enemy-hp-percentage', Math.floor(((hp/maxComputerHP)*100)) + "%");
+    pseudoRoot.style.setProperty('--enemy-hp-percentage', Math.floor(((hp / maxComputerHP) * 100)) + "%");
 }
 
-function setPlayerHP(hp){
+function setPlayerHP(hp) {
     playerHP = hp;
-    pseudoRoot.style.setProperty('--player-hp-percentage', Math.floor(((hp/maxPlayerHP)*100)) + "%");
+    pseudoRoot.style.setProperty('--player-hp-percentage', Math.floor(((hp / maxPlayerHP) * 100)) + "%");
 }
 
 /**
@@ -52,9 +79,9 @@ function makeChoice(choice) {
     let computerMove = Math.floor((Math.random() * 3));
     const result = calculateVictory(choice, computerMove);
     if (result === 1)
-        setComputerHP(computerHP-1);
+        setComputerHP(computerHP - 1);
     else if (result === -1)
-        setPlayerHP(playerHP-1);
+        setPlayerHP(playerHP - 1);
     if (playerHP === 0) {
         console.log("Computer has won");
     } else if (computerHP === 0) {
