@@ -31,8 +31,12 @@ function play(choice) {
     const computerChoice = makeChoice(choice);
     if (playerHP === 0) {
         victory(1); //computer has won
+        gameOver = true;
+        return;
     } else if (computerHP === 0) {
         victory(0); //player has won
+        gameOver = true;
+        return;
     }
 
     clearPanel();
