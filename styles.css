@@ -42,7 +42,7 @@ header{
 
 .panel img{
     height: auto;
-    width: auto;
+    max-width: 40%;
 }
 .choice-container{
     display: flex;
