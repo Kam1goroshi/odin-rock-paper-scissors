@@ -89,8 +89,12 @@ function victory(winner) {
         victoryMsg.textContent = "You won!";
     else if (winner === 1)
         victoryMsg.textContent = "Unlucky..";
-    panel.appendChild(victoryMsg);
-    panel.appendChild(promptMessage);
+
+    const msgContainer = document.createElement('div');
+    msgContainer.setAttribute('class', 'victory-messages');
+    msgContainer.appendChild(victoryMsg);
+    msgContainer.appendChild(promptMessage);
+    panel.appendChild(msgContainer);
 }
 
 function setComputerHP(hp) {
