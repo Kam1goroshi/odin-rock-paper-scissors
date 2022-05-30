@@ -4,6 +4,23 @@
  * 1: Paper
  * 2: Scissors
  */
+let computerHP = 5;
+let playerHP = 5;
+
+/**
+ * Player enters a choice and the remaining HP is calculated
+ * @param {number} choice : rock/paper/scissors as 0,1,2
+ */
+function makeChoice(choice){
+    const result = calculateVictory(choice, getComputerMove());
+    playerHP += result;
+    computerHP -= result;
+    if(playerHP === 0){
+        console.log("player has won");
+    }else if(computerHP === 0){
+        console.log("computer has won");
+    }
+}
 
 /**
  * @returns random integer [0, 3)
@@ -13,8 +30,8 @@ function getComputerMove(){
 }
 
 /**
- * @param {*} move the player move
- * @param {*} computerMove the computer move
+ * @param {number} move the player move
+ * @param {number} computerMove the computer move
  * @returns -1 on player defeat, 0 on tie, 1 on player victory
  */
 function calculateVictory(move, computerMove) {
