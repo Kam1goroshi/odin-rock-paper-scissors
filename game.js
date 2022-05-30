@@ -11,13 +11,15 @@ let playerHP = 5;
  * Player enters a choice and the remaining HP is calculated
  * @param {number} choice : rock/paper/scissors as 0,1,2
  */
-function makeChoice(choice){
+function makeChoice(choice) {
     const result = calculateVictory(choice, getComputerMove());
-    playerHP += result;
-    computerHP -= result;
-    if(playerHP === 0){
+    if (result === 1)
+        computerHP -= 1;
+    else if (result === -1)
+        playerHP -= 1;
+    if (playerHP === 0) {
         console.log("player has won");
-    }else if(computerHP === 0){
+    } else if (computerHP === 0) {
         console.log("computer has won");
     }
 }
@@ -25,7 +27,7 @@ function makeChoice(choice){
 /**
  * @returns random integer [0, 3)
  */
-function getComputerMove(){
+function getComputerMove() {
     return Math.floor((Math.random() * 3));
 }
 
@@ -55,5 +57,18 @@ function calculateVictory(move, computerMove) {
                 return -1;
     }
 }
+
+document.querySelector(".rock").addEventListener('click', (e) => {
+    makeChoice(0);
+    console.log(playerHP + " " + computerHP);
+})
+document.querySelector(".paper").addEventListener('click', (e) => {
+    makeChoice(1);
+    console.log(playerHP + " " + computerHP);
+})
+document.querySelector(".scissor").addEventListener('click', (e) => {
+    makeChoice(2);
+    console.log(playerHP + " " + computerHP);
+})
 
 module.exports = calculateVictory;
