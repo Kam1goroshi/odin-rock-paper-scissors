@@ -33,7 +33,6 @@ header{
 }
 .choice-container{
     display: flex;
-    flex-wrap: wrap;
     gap: 50px;
     justify-content: center;
     align-items: center;
@@ -56,26 +55,26 @@ header{
   
   .progress .progress-bar-enemy{
     height: 100%;
-    width: 50%;
+    width: 100%;
     background-color: #e33905;
     animation: enemy-fill-bar 2s;
   }
   
   .progress .progress-bar-player{
     height: 100%;
-    width: 50%;
+    width: 100%;
     background-color: #05e35e;
-    animation: enemy-fill-bar 2s;
+    animation: player-fill-bar 2s;
   }
 
   @keyframes enemy-fill-bar {
     from {width: 0%;}
-    to {width: 50%;}
+    to {width: 100%;}
   }
 
   @keyframes player-fill-bar {
     from {width: 0%;}
-    to {width: var(--player-bar-fill);}
+    to {width: 100%;}
   }
 footer{
     background-color: orange;
