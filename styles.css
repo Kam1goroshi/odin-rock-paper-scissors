@@ -1,0 +1,87 @@
+html, body{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+header{
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.stage{
+    display: flex;
+    justify-content: center;
+}
+
+.stage .panel{
+    justify-content: center;
+    background-image: rgba(black);
+    border-radius: 5px;
+    border-width: 5px;
+    width: 70vw;
+    height: 200px;
+    border-style: solid;
+}
+.choice-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+.choice-container .choice{
+    background-color: rgba(0,0,0,0);
+}
+.choice-container .choice img{
+    width: 100px;
+    height: 100px;
+}
+.progress {
+    margin: 25px auto;
+    padding: 2px;
+    width: 100%;
+    max-width: 500px;
+    border: 3px solid #215468;
+    height: 30px;
+  }
+  
+  .progress .progress-bar-enemy{
+    height: 100%;
+    width: 50%;
+    background-color: #e33905;
+    animation: enemy-fill-bar 2s;
+  }
+  
+  .progress .progress-bar-player{
+    height: 100%;
+    width: 50%;
+    background-color: #05e35e;
+    animation: enemy-fill-bar 2s;
+  }
+
+  @keyframes enemy-fill-bar {
+    from {width: 0%;}
+    to {width: 50%;}
+  }
+
+  @keyframes player-fill-bar {
+    from {width: 0%;}
+    to {width: var(--player-bar-fill);}
+  }
+footer{
+    background-color: orange;
+    padding: 15px;
+    gap: 30px;
+    display: flex;
+    justify-content: right;
+    flex: 0;
+}
