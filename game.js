@@ -22,6 +22,8 @@ const maxComputerHP = 5;
 const maxPlayerHP = 5;
 let computerHP = 5;
 let playerHP = 5;
+let lastComputerMove = null;
+let lastPlayerMove = null;
 const pseudoRoot = document.querySelector(":root");
 
 function setComputerHP(hp){
@@ -39,7 +41,8 @@ function setPlayerHP(hp){
  * @param {number} choice : rock/paper/scissors as 0,1,2
  */
 function makeChoice(choice) {
-    const result = calculateVictory(choice, getComputerMove());
+    let computerMove = Math.floor((Math.random() * 3));
+    const result = calculateVictory(choice, computerMove);
     if (result === 1)
         setComputerHP(computerHP-1);
     else if (result === -1)
@@ -49,13 +52,7 @@ function makeChoice(choice) {
     } else if (computerHP === 0) {
         console.log("Player has won");
     }
-}
-
-/**
- * @returns random integer [0, 3)
- */
-function getComputerMove() {
-    return Math.floor((Math.random() * 3));
+    return computerMove;
 }
 
 /**
