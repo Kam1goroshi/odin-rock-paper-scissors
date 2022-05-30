@@ -13,7 +13,7 @@ const pseudoRoot = document.querySelector(":root");
 const panel = document.querySelector('panel');
 
 /**
- * Remove all children from the panel
+ * Remove all children from the
  */
 function clearPanel() {
     while (panel.firstChild) {
@@ -21,19 +21,18 @@ function clearPanel() {
     }
 }
 
-document.querySelector(".rock").addEventListener('click', (e) => {
-    const computerChoice = makeChoice(0);
+/**
+ * Plays the given choice and updates css and hp
+ * @param {number} choice 0=rock ,1=paper, 2=scissors
+ */
+function play(choice){
+    const computerChoice = makeChoice(choice);
+    console.log(playerHP + " " + computerHP);
+}
 
-    console.log(playerHP + " " + computerHP);
-})
-document.querySelector(".paper").addEventListener('click', (e) => {
-    const computerChoice = makeChoice(1);
-    console.log(playerHP + " " + computerHP);
-})
-document.querySelector(".scissor").addEventListener('click', (e) => {
-    const computerChoice = makeChoice(2);
-    console.log(playerHP + " " + computerHP);
-})
+document.querySelector(".rock").addEventListener('click', ()=>{play(0)});
+document.querySelector(".paper").addEventListener('click', ()=>{play(1)});
+document.querySelector(".scissor").addEventListener('click', ()=>{play(2)});
 
 function setComputerHP(hp){
     computerHP = hp;
