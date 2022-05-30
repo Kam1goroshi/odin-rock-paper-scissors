@@ -11,7 +11,7 @@ let computerHP = 5;
 let playerHP = 5;
 const pseudoRoot = document.querySelector(":root");
 const panel = document.querySelector('.panel');
-
+let gameOver = false;
 /**
  * Remove all children from the
  */
@@ -26,7 +26,15 @@ function clearPanel() {
  * @param {number} choice 0=rock ,1=paper, 2=scissors
  */
 function play(choice) {
+    if(gameOver)
+        return;
     const computerChoice = makeChoice(choice);
+    if (playerHP === 0) {
+        victory(1); //computer has won
+    } else if (computerHP === 0) {
+        victory(0); //player has won
+    }
+
     clearPanel();
     const playerMoveImg = document.createElement('img');
     const computerMoveImg = document.createElement('img');
@@ -70,7 +78,6 @@ document.querySelector(".scissor").addEventListener('click', () => { play(2) });
 function victory(winner) {
     console.log("Player has won");
     clearPanel();
-    console.log("cleared panel?");
     const promptMessage = document.createElement('p');
     promptMessage.textContent = 'Refresh the browser to play again';
     const victoryMsg = document.createElement('h2');
@@ -103,11 +110,6 @@ function makeChoice(choice) {
         setComputerHP(computerHP - 1);
     else if (result === -1)
         setPlayerHP(playerHP - 1);
-    if (playerHP === 0) {
-        victory(1); //computer has won
-    } else if (computerHP === 0) {
-        victory(0); //player has won
-    }
     return computerMove;
 }
 
