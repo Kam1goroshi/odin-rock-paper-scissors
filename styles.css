@@ -1,3 +1,8 @@
+:root{
+    --enemy-hp-percentage: 100%;
+    --player-hp-percentage: 100%;
+}
+
 html, body{
     height: 100%;
     display: flex;
@@ -55,26 +60,26 @@ header{
   
   .progress .progress-bar-enemy{
     height: 100%;
-    width: 100%;
+    width: var(--enemy-hp-percentage);;
     background-color: #e33905;
     animation: enemy-fill-bar 2s;
   }
   
   .progress .progress-bar-player{
     height: 100%;
-    width: 100%;
+    width: var(--player-hp-percentage);
     background-color: #05e35e;
     animation: player-fill-bar 2s;
   }
 
   @keyframes enemy-fill-bar {
     from {width: 0%;}
-    to {width: 100%;}
+    to {width: var(--enemy-hp-percentage);}
   }
 
   @keyframes player-fill-bar {
     from {width: 0%;}
-    to {width: 100%;}
+    to {width: var(--player-hp-percentage);}
   }
 footer{
     background-color: orange;

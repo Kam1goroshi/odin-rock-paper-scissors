@@ -4,8 +4,35 @@
  * 1: Paper
  * 2: Scissors
  */
+
+ document.querySelector(".rock").addEventListener('click', (e) => {
+    makeChoice(0);
+    console.log(playerHP + " " + computerHP);
+})
+document.querySelector(".paper").addEventListener('click', (e) => {
+    makeChoice(1);
+    console.log(playerHP + " " + computerHP);
+})
+document.querySelector(".scissor").addEventListener('click', (e) => {
+    makeChoice(2);
+    console.log(playerHP + " " + computerHP);
+})
+
+const maxComputerHP = 5;
+const maxPlayerHP = 5;
 let computerHP = 5;
 let playerHP = 5;
+const pseudoRoot = document.querySelector(":root");
+
+function setComputerHP(hp){
+    computerHP = hp;
+    pseudoRoot.style.setProperty('--enemy-hp-percentage', Math.floor(((hp/maxComputerHP)*100)) + "%");
+}
+
+function setPlayerHP(hp){
+    playerHP = hp;
+    pseudoRoot.style.setProperty('--player-hp-percentage', Math.floor(((hp/maxPlayerHP)*100)) + "%");
+}
 
 /**
  * Player enters a choice and the remaining HP is calculated
@@ -14,13 +41,13 @@ let playerHP = 5;
 function makeChoice(choice) {
     const result = calculateVictory(choice, getComputerMove());
     if (result === 1)
-        computerHP -= 1;
+        setComputerHP(computerHP-1);
     else if (result === -1)
-        playerHP -= 1;
+        setPlayerHP(playerHP-1);
     if (playerHP === 0) {
-        console.log("player has won");
+        console.log("Computer has won");
     } else if (computerHP === 0) {
-        console.log("computer has won");
+        console.log("Player has won");
     }
 }
 
@@ -58,17 +85,5 @@ function calculateVictory(move, computerMove) {
     }
 }
 
-document.querySelector(".rock").addEventListener('click', (e) => {
-    makeChoice(0);
-    console.log(playerHP + " " + computerHP);
-})
-document.querySelector(".paper").addEventListener('click', (e) => {
-    makeChoice(1);
-    console.log(playerHP + " " + computerHP);
-})
-document.querySelector(".scissor").addEventListener('click', (e) => {
-    makeChoice(2);
-    console.log(playerHP + " " + computerHP);
-})
 
 module.exports = calculateVictory;
