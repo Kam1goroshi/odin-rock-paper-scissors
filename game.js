@@ -57,9 +57,30 @@ function play(choice) {
     console.log(playerHP + " " + computerHP);
 }
 
+
 document.querySelector(".rock").addEventListener('click', () => { play(0) });
 document.querySelector(".paper").addEventListener('click', () => { play(1) });
 document.querySelector(".scissor").addEventListener('click', () => { play(2) });
+
+
+/**
+ * Victory function. Ends the game and displays appropriate message on the pannel.
+ * @param {*} winner 0=player, 1=computer
+ */
+function victory(winner) {
+    console.log("Player has won");
+    clearPanel();
+    console.log("cleared panel?");
+    const promptMessage = document.createElement('p');
+    promptMessage.textContent = 'Refresh the browser to play again';
+    const victoryMsg = document.createElement('h2');
+    if (winner === 0)
+        victoryMsg.textContent = "You won!";
+    else if (winner === 1)
+        victoryMsg.textContent = "Unlucky..";
+    panel.appendChild(victoryMsg);
+    panel.appendChild(promptMessage);
+}
 
 function setComputerHP(hp) {
     computerHP = hp;
@@ -83,9 +104,9 @@ function makeChoice(choice) {
     else if (result === -1)
         setPlayerHP(playerHP - 1);
     if (playerHP === 0) {
-        console.log("Computer has won");
+        victory(1); //computer has won
     } else if (computerHP === 0) {
-        console.log("Player has won");
+        victory(0); //player has won
     }
     return computerMove;
 }

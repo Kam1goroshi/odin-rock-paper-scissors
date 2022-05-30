@@ -28,13 +28,20 @@ header{
 }
 
 .stage .panel{
-    justify-content: center;
+    display: flex;
+    justify-content:space-evenly;
+    padding: 5%;
     background-image: rgba(black);
     border-radius: 5px;
     border-width: 5px;
     width: 70vw;
     height: 200px;
     border-style: solid;
+}
+
+.panel img{
+    height: auto;
+    width: auto;
 }
 .choice-container{
     display: flex;
